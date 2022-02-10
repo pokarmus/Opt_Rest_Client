@@ -1,0 +1,7 @@
+ {
+   "address": "http://10.8.3.134:8080/",
+   "user": "admin",
+   "password": "admin",
+   "inputDir": "src/input",
+   "outputDir": "src/output"
+ }
