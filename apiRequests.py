@@ -14,7 +14,7 @@ def login_from_file():
     params = read_con_params()
     data = {"username": params["user"], "password": params["password"]}
     print("Logowanie użytkownika za pomocą parametrów: " + str(data))
-    response = requests.post(params["address"] + 'login', json=data)
+    response = requests.post(params["address"] + params["loginUrl"], json=data)
     print("Session jwt: " + response.json()["jwt"])
     return response.json()
 
@@ -29,6 +29,7 @@ def send_vrp_json(login_params, vrp_json_path):
 
     print("Wysyłam plik " + get_full_file_name(vrp_json_path) + " do serwera optymalizacji VRP...")
 
-    response = requests.post(params["address"] + 'vrp/solve-test-task', headers=headers, json=vrp_json)
+    response = requests.post(params["address"] + params["solveUrl"], headers=headers, json=vrp_json)
+
     print("Otrzymano odpowiedź, zapisuję pliki...")
     return response.json()
