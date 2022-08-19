@@ -12,7 +12,7 @@ def login(user, password, api_url):
 def login_from_file():
     params = read_single_json(PARAMS_PATH)
     data = {"username": params["user"], "password": params["password"]}
-    print(f'Logowanie użytkownika za pomocą parametrów: + {str(data)}')
+    print(f'Logowanie użytkownika za pomocą parametrów: {str(data)}')
     response = requests.post(params["address"] + params["loginUrl"], json=data)
     print(f'Session jwt: {response.json()["jwt"]}')
     return response.json()
