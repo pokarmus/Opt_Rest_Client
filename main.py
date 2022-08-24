@@ -1,8 +1,9 @@
 import time
+from requests.exceptions import RequestException
 
-from apiRequests import *
-from fileReader import *
-
+from apiRequests import login_from_file, send_vrp_json
+from fileReader import read_single_json, list_files, move_file_to_output, save_resoult_to_output, PARAMS_PATH, \
+    create_dir
 
 if __name__ == '__main__':
 
@@ -24,7 +25,7 @@ if __name__ == '__main__':
                 print('!!! Błędny plik, sprawdź zawartość i spróbuj ponownie !!!')
                 dir_f = create_dir(path + "/" + files_list[0])
                 move_file_to_output(path + "/" + files_list[0], True)
-            except requests.exceptions.RequestException:
+            except RequestException:
                 print('!!! Nie udało się połączyć z serwerem. Nastąpi ponowna próba połączenia !!!')
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         time.sleep(10)

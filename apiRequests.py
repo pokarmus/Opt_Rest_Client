@@ -1,6 +1,7 @@
 import requests
 from requests.structures import CaseInsensitiveDict
-from fileReader import *
+
+from fileReader import read_single_json, get_full_file_name, PARAMS_PATH
 
 
 def login(user, password, api_url):
